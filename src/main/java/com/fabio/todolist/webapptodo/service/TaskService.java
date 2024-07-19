@@ -30,24 +30,6 @@ public class TaskService {
         return taskRepository.findById(id);
     }
 
-    public Task update(Long id, String title, String description) {
-        Optional<Task> optionalTask = taskRepository.findById(id);
-
-        if (optionalTask.isEmpty()) {
-            return null;
-        }
-
-        Task oldTask = optionalTask.get();
-        if (title != null && !title.isEmpty()) {
-            oldTask.setTitle(title);
-        }
-        if (description != null && !description.isEmpty()) {
-            oldTask.setDescription(description);
-        }
-
-        return taskRepository.save(oldTask);
-    }
-
     public void delete(Long id) {
         taskRepository.deleteById(id);
     }
